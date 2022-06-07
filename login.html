@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 // Initialize the session
 session_start();
  
@@ -86,7 +86,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Close connection
     mysqli_close($link);
 }
-?>
+?> -->
 
  
 <!DOCTYPE html>
@@ -97,12 +97,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style_login_page.css">
+
 </head>
 
 <body>
     <div>
         <div>
-            <h1></h1>
+            <h1>Login</h1>
         </div>
     </div>
     
@@ -111,15 +113,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         
     </div>
         <div>
-            <form action="login.php" method="post" enctype="multipart/form-data">
+            <form action="login.php" method="post" enctype="multipart/form-data" cl class="login"> 
+                <lable class="labels">
+                    <b>Username</b>
+                </lable>
                 <div>
-                    <input type="text" name="username" value="" placeholder="Username"><br>
+                    <input type="text" name="username" value="" placeholder="Username" class="input" >
                 </div>
+                
+                <label class="labels">
+                    <b>Password</b>
+                </label>
                 <div>
-                    <input type="password" name="password" value="" placeholder="Password"><br>
+                    <input type="password" name="password" value="" placeholder="Password" class="input" ><br>
                 </div>
+                <br><br>
                 <div>
-                <button type="submit" name="save">LOGIN</button>
+                <button type="submit" name="save" class="log" >LOGIN</button>
                 </div>
             
             </form>
