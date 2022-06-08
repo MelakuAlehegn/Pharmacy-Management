@@ -26,7 +26,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <div class="container form-login">
             <form action="index.php" method="post" enctype="multipart/form-data">
                 <div class="container-inputs">
-                    <button type="submit" name="save" class="owner login">Owner</button>
+                    
                     <input type="text" name="first_name" value="" placeholder="Drug Name"><br>
                     <input type="text" name="last_name" value="" placeholder="Brand"><br>
                     <input type="date" name="id" value="" placeholder ="Expiry Date"><br>
