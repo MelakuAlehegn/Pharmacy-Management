@@ -22,6 +22,13 @@ $sql = "SELECT * FROM drugs WHERE Dname LIKE '%$searchName%'";
 $result = mysqli_query($conn, $sql);    
 $files = mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
+
+if (isset($_POST['dispExpired'])) {
+  echo "Today is " . date("d-m-Y");
+  $sql = "SELECT * FROM drugs WHERE Edate < CURDATE()";          
+  $result = mysqli_query($conn, $sql);    
+  $files = mysqli_fetch_all($result, MYSQLI_ASSOC);
+}
 ?>
 
 <?php include 'style1.css'?>
@@ -45,6 +52,7 @@ $files = mysqli_fetch_all($result, MYSQLI_ASSOC);
         
         <form class="dispClearBtns" action="search.php" method="post">
           <button class="clearBtn" type="submit" name="dispDrugs">Display All Drugs</button>
+          <button type="submit" name="dispExpired">Display Expired Drugs</button>
           <button class="displayBtn" type="submit" name="displayAllCus"><a href="displayCustomers.php">Display All Customers</a></button>
           </form>
         
