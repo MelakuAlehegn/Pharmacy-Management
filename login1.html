@@ -97,23 +97,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="style_login_page.css">
+    <link rel="stylesheet" type="text/css" href="login1.css">
 
 </head>
 
 <body>
-    <div>
-        <div>
-            <h1>Login</h1>
-        </div>
-    </div>
-    
     <section>
     <div>
         
     </div>
         <div>
             <form action="login.php" method="post" enctype="multipart/form-data" cl class="login"> 
+                <div>
+                    <h1>Login</h1>
+                </div>
                 <lable class="labels">
                     <b>Username</b>
                 </lable>
@@ -127,11 +124,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <div>
                     <input type="password" name="password" value="" placeholder="Password" class="input" ><br>
                 </div>
-                <br><br>
+                <br>
                 <div>
                 <button type="submit" name="save" class="log" >LOGIN</button>
                 </div>
-            
+                <br>
+                <div>
+                    <a href="login2.html" class="last">Owner login</a>
+                </div>
             </form>
         </div>
     </section>
