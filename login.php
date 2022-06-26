@@ -100,11 +100,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </head>
 
 <body>
-
-    <div>
-        <button><a href="login2.php">OWNER</a></button>
-    </div>
-
     <div>
         <div>
             <h1></h1>

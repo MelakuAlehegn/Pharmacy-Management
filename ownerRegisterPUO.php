@@ -1,13 +1,5 @@
-<?php include 'handle.php';
+<?php include 'handle.php'; 
 
-session_start();
- 
-// Check if the user is logged in, if not then redirect him to login page
-if(!isset($_SESSION["loggedin2"]) || $_SESSION["loggedin2"] !== true){
-    header("location: login1.php");
-    
-    exit; 
-}
 // Include config file
 require_once "config.php";
  
@@ -89,8 +81,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
                 // Redirect to login page
-                echo "Pharmacist admin registered successfully.";
-                header("location: login1.php");
+                header("location: login.php");
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
             }
@@ -118,46 +109,41 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         body{ font: 14px sans-serif; }
         .wrapper{ width: 360px; padding: 20px; }
     </style>
-    <link rel="stylesheet" type="text/css" href="login1.css">
 </head>
-<body class="flex-container">
+<body>
     <div class="wrapper">
-        <form class="admin1" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <h2 class="reg">Register admin Pharmacist</h2>
+        <h2>Register admin Pharmacist</h2>
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group">
                 <label>Username</label>
-                <br>
-                <input id ="input_admin" type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
+                <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
                 <span class="invalid-feedback"><?php echo $username_err; ?></span>
             </div>    
             <div class="form-group">
                 <label>Password</label>
-                <br>
-                <input id="input_admin" type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
+                <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
                 <span class="invalid-feedback"><?php echo $password_err; ?></span>
             </div>
             <div class="form-group">
                 <label>Confirm Password</label>
-                <br>
-                <input  id="input_admin" type="password" name="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
+                <input type="password" name="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
                 <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
             </div>
-            <br>
             <div class="form-group">
-                <input id="log_admin1" type="submit" class="btn btn-primary" value="Submit">
-                <input id="log_admin1" type="reset" class="btn btn-secondary ml-2" value="Clear">
+                <input type="submit" class="btn btn-primary" value="Submit">
+                <input type="reset" class="btn btn-secondary ml-2" value="Clear">
             </div>
          </form>
     </div>
-    <form class="admin2" action="handle.php" method="post" enctype="multipart/form-data">
-    <h2 class="reg">Remove admin Pharmacist</h2>
+
+    <h2>Remove admin Pharmacist</h2>
+    <form action="handle.php" method="post" enctype="multipart/form-data">
     <div> 
-        <input id= "input_admin" type="text" name="deli" value="" placeholder="Remove Admin Pharmacist"><br>                 
+        <input type="text" name="deli" value="" placeholder="Remove Admin Pharmacist"><br>                 
     </div>
-    <br>
                 
     <div>
-        <button id="log_admin2" type="submit" name="del" class="sub">Delete</button>
+        <button type="submit" name="del" class="sub">Delete</button>
     </div>
     </form>
    </body>

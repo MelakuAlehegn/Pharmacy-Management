@@ -2,7 +2,7 @@
 session_start();
 // Check if the user is logged in, otherwise redirect to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: login.php");
+    header("location: login1.php");
     exit;
 }
 
@@ -20,7 +20,7 @@ $files = mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
 ?>
 
-<?php include 'style1.css'?>
+<!-- <?php include 'style1.css'?> -->
 <!DOCTYPE html>
 <html lang="en">
   <head> 
@@ -28,9 +28,8 @@ $files = mysqli_fetch_all($result, MYSQLI_ASSOC);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
     <title>Search</title>
+    <link rel="stylesheet" type="text/css" href="style1.css">
 
   
 </head>
@@ -40,13 +39,13 @@ $files = mysqli_fetch_all($result, MYSQLI_ASSOC);
       <div class="container">
         
         <form class="dispClearBtns" action="search.php" method="post">
-          <button class="displayBtn" type="submit" name="displayAllCus"><a href="displayCustomers.php">Display All Customers</a></button>
-          <button class="clearBtn" type="submit" name="dispDrugs"><a href="search.php">Return Back</a></button>
+          <button class="displayBtn" type="submit" name="displayAllCus"><a href="displayCustomers.php" class="text">Display All Customers</a></button>
+          <button class="clearBtn" type="submit" name="dispDrugs"><a href="search.php" class="text">Return Back</a></button>
         </form>
         
         <form class="searchId" action="displayCustomers.php" method="post">
-          <h4> Search Customer By Name</h4>
-          <input class="inputId" type="text" placeholder="" name="cusName" value="">
+          <h4 class="texts"> Search Customer By Name</h4>
+          <input class="inputId" type="text" placeholder="Search" name="cusName" value="">
           <button class="idBtn" type="submit" name="searchCus">Search</button>
         </form>
         
@@ -59,7 +58,7 @@ $files = mysqli_fetch_all($result, MYSQLI_ASSOC);
     <th>Age</th>
     <th>Gender</th>
     <th>Phone Number</th>
-    <th>Drud Bought</th>
+    <th>Drug Bought</th>
     <!-- <th>Action</th> -->
   </tr>
 </thead>

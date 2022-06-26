@@ -3,8 +3,8 @@
 session_start();
  
 // Check if the user is already logged in, if yes then redirect him to welcome page
-if(isset($_SESSION["loggedin2"]) && $_SESSION["loggedin2"] === true){
-    header("location: adminregister.php");
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+    header("location: welcome.php");
     exit;
 }
  
@@ -35,7 +35,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validate credentials
     if(empty($username_err) && empty($password_err)){
         // Prepare a select statement
-        $sql = "SELECT id, username, password FROM owner WHERE username = ?";
+        $sql = "SELECT id, username, password FROM admin WHERE username = ?";
         
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
@@ -59,15 +59,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             session_start();
                             
                             // Store data in session variables
-                            $_SESSION["loggedin2"] = true;
+                            $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username;                            
                             
                             // Redirect user to welcome page
-                            header("location: adminregister.php");
-                            
-                            exit;
-
+                            header("location: welcome.php");
                         } else{
                             // Password is not valid, display a generic error message
                             $login_err = "Invalid username or password.";
@@ -88,64 +85,53 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     
     // Close connection
     mysqli_close($link);
-
-    // Initialize the session
-session_start();
- 
-// Unset all of the session variables
-$_SESSION = array();
- 
-// Destroy the session.
-session_destroy();
- 
-// Redirect to login page
-header("location: login2.php");
-exit;
-
 }
 ?>
+
  
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-   
-    <title>ADMIN</title>
+    <title>LOGIN</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="login1.css">
+
 </head>
 
 <body>
-    
     <section>
-   
+    <div>
+        
+    </div>
         <div>
-            <form action="login2.php" method="post" enctype="multipart/form-data" class="login">
+            <form action="login1.php" method="post" enctype="multipart/form-data"  class="login"> 
                 <div>
-                    <h1>Admin login</h1>
+                    <h1>Login</h1>
                 </div>
+                <!-- <lable class="labels">
+                    <b>Username</b>
+                </lable> -->
                 <div>
-                    <!-- <label>Username</label>
-                    <br> -->
-                    <input type="text" name="username" value="" placeholder="Username" class="input"><br>
+                    <input type="text" name="username" value="" placeholder="Username" class="input" >
                 </div>
+                
+                <!-- <label class="labels">
+                    <b>Password</b>
+                </label> -->
                 <div>
-                    <!-- <lable>Password</lable>
-                    <br> -->
-                    <input type="password" name="password" value="" placeholder="Password" class="input
-                    "><br>
-                </div>
-                <div>
-                <br>
-                <button type="submit" name="save" class="log">LOGIN</button>
+                    <input type="password" name="password" value="" placeholder="Password" class="input" ><br>
                 </div>
                 <br>
                 <div>
-                    <a href="login1.php" class="last">User login</a>
+                <button type="submit" name="save" class="log" >LOGIN</button>
                 </div>
-            
+                <br>
+                <div>
+                    <a href="login2.php" class="last">Admin login</a>
+                </div>
             </form>
         </div>
     </section>
