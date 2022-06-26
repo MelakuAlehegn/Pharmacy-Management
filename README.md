@@ -6,7 +6,8 @@ A simple Project intended to implement a management system for one of the Pharma
   ### Backend : PHP
   ### Database : MySQL
   
-  
+#
+#
 
 
 
@@ -14,3 +15,7 @@ A simple Project intended to implement a management system for one of the Pharma
           '''npm run build''' and 
           '''npm run watch''' as depicted in package.json
           
+# Contributors:
+- [Abrham Addis](https://github.com/abrhamadddis)
+- [Melaku Alehegn](https://github.com/MelakuAlehegn)
+- [Tewodros Cheru](https://github.com/teddycheru)
